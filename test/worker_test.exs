@@ -3,9 +3,8 @@ defmodule WorkerTest do
   import Mock
 
   test "ignores a malformed url" do
-    url = "this-is-not-a-url"
-
-    assert "IGNORED this-is-not-a-url" == Blitzchecken.Worker.check_url(url)
+    assert "IGNORED this-is-not-a-url" == Blitzchecken.Worker.check_url("this-is-not-a-url")
+    assert "IGNORED hppt://www.slayer.com" == Blitzchecken.Worker.check_url("hppt://www.slayer.com")
   end
 
   test "ignores when the argument is not a string" do

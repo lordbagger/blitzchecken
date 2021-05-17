@@ -28,7 +28,27 @@ defmodule Blitzchecken.Worker do
     "GET #{url} -> #{Float.ceil(timestamp, 0)} ms "
   end
 
-  defp is_valid_url?(url) do
-    String.starts_with?(url, "http://") || String.starts_with?(url, "https://")
+  defp is_valid_url?(url) when is_binary(url) do
+    is_valid_url?(URI.parse(url))
+  end
+
+  defp is_valid_url?(%URI{scheme: nil}) do
+    false
+  end
+
+  defp is_valid_url?(%URI{host: nil}) do
+    false
+  end
+
+  defp is_valid_url?(%URI{scheme: "http", host: host}) do
+    String.length(host) > 0
+  end
+
+  defp is_valid_url?(%URI{scheme: "https", host: host}) do
+    String.length(host) > 0
+  end
+
+  defp is_valid_url?(%URI{scheme: _}) do
+    false
   end
 end
