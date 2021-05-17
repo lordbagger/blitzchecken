@@ -22,7 +22,8 @@ defmodule Blitzchecken.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.8"},
-      {:timex, "~> 3.7"}
+      {:timex, "~> 3.7"},
+      {:mock, "~> 0.3.0", only: :test}
     ]
   end
 end
