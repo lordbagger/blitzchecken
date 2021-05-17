@@ -8,6 +8,10 @@ defmodule WorkerTest do
     assert "IGNORED this-is-not-a-url" == Blitzchecken.Worker.check_url(url)
   end
 
+  test "ignores when the argument is not a string" do
+    assert "IGNORED 1" == Blitzchecken.Worker.check_url(1)
+  end
+
   test "returns the expected output when a request is successful" do
     url = "https://www.ironmaiden.com"
 

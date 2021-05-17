@@ -12,6 +12,10 @@ defmodule Blitzchecken.Worker do
     end
   end
 
+  def check_url(something) do
+    "IGNORED #{something}"
+  end
+
   defp handle_response({timestamp, url, {:ok, %HTTPoison.Response{status_code: status_code}}}) do
     output(timestamp, url) <> "#{status_code}"
   end
