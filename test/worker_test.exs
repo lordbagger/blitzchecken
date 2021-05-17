@@ -4,7 +4,9 @@ defmodule WorkerTest do
 
   test "ignores a malformed url" do
     assert "IGNORED this-is-not-a-url" == Blitzchecken.Worker.check_url("this-is-not-a-url")
-    assert "IGNORED hppt://www.slayer.com" == Blitzchecken.Worker.check_url("hppt://www.slayer.com")
+
+    assert "IGNORED hppt://www.slayer.com" ==
+             Blitzchecken.Worker.check_url("hppt://www.slayer.com")
   end
 
   test "ignores when the argument is not a string" do
