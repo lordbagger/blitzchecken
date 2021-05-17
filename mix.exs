@@ -6,6 +6,7 @@ defmodule Blitzchecken.MixProject do
       app: :blitzchecken,
       version: "0.1.0",
       elixir: "~> 1.11",
+      escript: [main_module: Blitzchecken],
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -23,7 +24,9 @@ defmodule Blitzchecken.MixProject do
     [
       {:httpoison, "~> 1.8"},
       {:timex, "~> 3.7"},
-      {:mock, "~> 0.3.0", only: :test}
+      {:mock, "~> 0.3.0", only: :test},
+      # added this entry to stop fuck-up during execution
+      {:tzdata, "~> 0.1.8", override: true}
     ]
   end
 end
